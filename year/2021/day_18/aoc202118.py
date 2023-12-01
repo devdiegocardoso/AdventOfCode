@@ -2,14 +2,29 @@ import pathlib
 import sys
 
 def parse(puzzle_input):
-    return [int(line) for line in puzzle_input.split()]
+    return [(line) for line in puzzle_input.split()]
 
 def parse_list(puzzle_input):
     list_tmp = [line for line in puzzle_input.split()]
     return [(list_tmp[i], int(list_tmp[i+1])) for i in range(0,len(list_tmp),2)]
 
 def part_one(numbers):
-    return
+    list_items = []
+    watcher = 0
+    for number in numbers:
+        while watcher < len(number):
+            pair = []
+            if number[watcher] == '[' and number[watcher+1] != '[':
+                watcher += 1
+                while number[watcher] != ']':
+                    if number[watcher] != ',':
+                        pair.append(number[watcher])
+                    watcher += 1
+                list_items.append(pair)
+            watcher += 1
+    return list_items
+
+
 
 def part_two(numbers):
     return
